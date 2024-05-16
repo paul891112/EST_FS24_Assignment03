@@ -1,12 +1,16 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class MessageProcessor {
 
-    public void processMessages(List<Message> messages) {
-        MessageService messageService = new MessageService();
+    public List<String> processMessages(List<Message> messages, MessageService messageService) {
+        List<String> sentMessages = new ArrayList<>();
 
         for (Message message : messages) {
             messageService.sendMessage(message.getReceiver(), message.getContent());
+            String m = message.getReceiver() + ":" + message.getContent();
+            sentMessages.add(m);
         }
+        return sentMessages;
     }
 }
