@@ -9,11 +9,20 @@ By specifying the messageService as input parameter to processMessage(), as a te
 over the dependency and can use mock objects to test the behavior of processMessage() that I couldn't 
 do before.
 
+## Set up mocks
+
+In this exercise, the messageService poses an external dependency. The implementation is hidden away from the tester, 
+therefore a mock object for this instance is necessary for testing purpose. We also stub the behavior of sendMessage() 
+such that when ever processMessages() calls this subroutine, it doesn't execute the API call. Alternatively, we can 
+define certain behavior to replace the original such that testing is made easier, but this will add uncertainty to the 
+method under test.
+
 ## A. Number of invocation
 
 The method under test processMessages() calls the subroutine messageService.sendMessage() as many times 
 as the size of input parameter messages, which is a list of Messages. For unit testing purposes, test 
-cases with input size 0, 1, 5 and random size are added to test suite.
+cases with input size 0, 1, 5 and random size are added to test suite. An automated test cases is added in addition.
+All tests pass.
 
 ## B. Content of invocation - ArgumentCaptor 
 
@@ -21,7 +30,7 @@ Devise a test case that generates 5 messages, keeps the receivers and contents i
 them with values extracted with ArgumentCaptor. Both collections contain exactly the same elements. The test passes.
 
 The empty input list doesn't deserve to be tested, since we have already asserted that messageService is 
-not executed when passing an empty list as parameter.
+not executed when passing an empty list as parameter. Tests pass as expected.
 
 ## C. Content of invocation - increased Observability
 
@@ -31,6 +40,8 @@ and content.
 
 To test for correctness, when generating the input array list, the receiver and content of the message are merged to 
 one string and kept in a seperate array list. This array is compared to the return list of processMessages().
+
+While changing the code, I try to only modify processMessages() because it is the only method under test.
 
 ## D. Comparisons
 
