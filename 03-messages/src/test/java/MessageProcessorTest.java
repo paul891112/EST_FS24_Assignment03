@@ -54,7 +54,6 @@ public class MessageProcessorTest {
     @ValueSource(ints = {8,17,55,234,779,1903})
     public void whenRandomSizeListX_CallXTime(int x){
 
-        Random rand = new Random();
         for (int i=0; i<x;i++){
             args.add(new MockMessageBuilder().withReceiver("rec" + i).withContent("Message to " + i).build());
         }
