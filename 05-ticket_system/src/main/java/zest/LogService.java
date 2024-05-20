@@ -1,4 +1,4 @@
-package support;
+package zest;
 
 // Logging service interface
 public interface LogService {

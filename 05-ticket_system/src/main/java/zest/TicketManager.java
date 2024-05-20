@@ -1,4 +1,4 @@
-package support;
+package zest;
 
 // TicketManager class to handle ticket creation and interaction with services
 public class TicketManager {
@@ -13,17 +13,25 @@ public class TicketManager {
     }
 
     public void createTicket(Ticket ticket) {
-        // Log the ticket creation
-        logService.logTicketCreation(ticket);
+        // Try to log the ticket creation
+        try {
+            logService.logTicketCreation(ticket);
+        } catch (RuntimeException e) {
+            System.err.println("Logging service failed: " + e.getMessage());
+        }
 
-        // Notify the customer
-        notificationService.notifyCustomer(ticket.getCustomerEmail(), 
-            "Thank you for your request. Your support ticket has been created and will be processed shortly.");
+        // Try to notify the customer
+        try {
+            notificationService.notifyCustomer(ticket.getCustomerEmail(),
+                    "Thank you for your request. Your support ticket has been created and will be processed shortly.");
+        } catch (RuntimeException e) {
+            System.err.println("Notification service failed: " + e.getMessage());
+        }
 
         // Save the ticket to the database
         saveTicket(ticket);
     }
-    
+
     // Method to save ticket to a database
     private void saveTicket(Ticket ticket) {
         ticketRepository.save(ticket);
