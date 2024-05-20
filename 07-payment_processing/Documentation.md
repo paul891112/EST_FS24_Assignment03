@@ -29,4 +29,4 @@ There are advantages and disadvantages for both `ArgumentCaptor` and increasing 
 - Decouples the tests from the implementation details of the code. This can lead to more robust tests that are less likely to break when the implementation changes.
 - Requires modification of the code itself, which is not always wanted or possible or even allowed.
 
-- Github Copilot was used to improve the format of the Documentation.md file. The prompt was "Reformat this file and highlight all file names and methods", including the Documentation.md file I wrote.
+Github Copilot was used to improve the format of the Documentation.md file. The prompt was "Reformat this file and highlight all file names and methods", including the Documentation.md file I wrote.
