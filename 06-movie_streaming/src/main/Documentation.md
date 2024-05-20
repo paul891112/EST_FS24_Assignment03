@@ -1,0 +1,1 @@
+added Method updateMovingMetadata and validateStreamingTOken

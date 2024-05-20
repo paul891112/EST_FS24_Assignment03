@@ -1,0 +1,1 @@
+added try catch for both calls to external dependencies
