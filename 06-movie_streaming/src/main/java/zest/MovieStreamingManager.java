@@ -1,3 +1,5 @@
+package zest;
+
 public class MovieStreamingManager {
     private FileStreamService fileStreamService;
     private CacheService cacheService;
@@ -20,5 +22,11 @@ public class MovieStreamingManager {
         return details;
     }
 
-    // Additional methods can be added here for other functionalities
+    public void updateMovieMetadata(String movieId, MovieMetadata metadata){
+        fileStreamService.updateMetadata(movieId, metadata);
+        cacheService.refreshCache(movieId, metadata);
+    } //Updates movie information in the distributed file system and refreshes the cache.
+    public boolean validateStreamingToken(String token){
+        return fileStreamService.validateToken(token);
+    } //Checks the validity of a token against file system records.
 }

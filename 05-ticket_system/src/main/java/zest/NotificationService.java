@@ -1,4 +1,4 @@
-package support;
+package zest;
 
 // Notification service interface
 public interface NotificationService {

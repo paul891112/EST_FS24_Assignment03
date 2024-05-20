@@ -1,3 +1,4 @@
+package zest;
 public interface CacheService {
     StreamingDetails getDetails(String movieId);
     void cacheDetails(String movieId, StreamingDetails details);
